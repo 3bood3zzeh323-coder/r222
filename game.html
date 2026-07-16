@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surprise! 💜</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="page-fade-in">
+    <div class="bg-wrapper"></div>
+    <div id="particles-container"></div>
+    
+    <button id="music-toggle" class="glass-btn">🎵 Music</button>
+
+    <main class="center-content full-area" id="game-area">
+        <!-- Escaping Button -->
+        <button id="escape-btn" class="glass-btn primary-btn">Click Me 💖</button>
+
+        <!-- Pony Container (Hidden initially) -->
+        <div id="pony-container" class="hidden">
+            <!-- Using an emoji fallback, replace src with actual assets/pony.gif if available -->
+            <img src="assets/pony.gif" alt="Cute Pony" id="pony-img" onerror="this.style.display='none'; document.getElementById('pony-fallback').style.display='block';">
+            <div id="pony-fallback" style="display:none; font-size: 80px;">🦄</div>
+        </div>
+    </main>
+
+    <!-- Success Modal -->
+    <div id="success-modal" class="modal hidden">
+        <div class="glass-card text-center">
+            <h2>You found the cutest pony! 💖</h2>
+            <button class="continue-btn mt-2" onclick="transitionTo('ending.html')">Continue &rarr;</button>
+        </div>
+    </div>
+
+    <audio id="bg-music" loop src="assets/music.mp3"></audio>
+    <script src="js/main.js"></script>
+    <script src="js/particles.js"></script>
+    <script src="js/game.js"></script>
+</body>
+</html>

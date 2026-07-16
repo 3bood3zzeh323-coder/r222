@@ -1,0 +1,318 @@
+/* =========================================
+   Global Variables & Reset
+   ========================================= */
+:root {
+    --primary: #9b59b6;
+    --secondary: #ff79c6;
+    --text-light: #f8f8f2;
+    --glass-bg: rgba(255, 255, 255, 0.1);
+    --glass-border: rgba(255, 255, 255, 0.2);
+    --shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Prevent scrolling for app-like feel */
+    background-color: #111;
+    color: var(--text-light);
+}
+
+/* =========================================
+   Background & Environments
+   ========================================= */
+.bg-wrapper {
+    position: fixed;
+    top: -5%; left: -5%;
+    width: 110%; height: 110%;
+    background: url('../assets/background.jpg') center/cover no-repeat;
+    filter: blur(8px) brightness(0.6);
+    z-index: -2;
+}
+
+.bg-wrapper::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(155, 89, 182, 0.3), rgba(255, 121, 198, 0.3));
+    z-index: -1;
+}
+
+/* =========================================
+   Layout & Utility Classes
+   ========================================= */
+.center-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    position: relative;
+    z-index: 10;
+}
+
+.full-area {
+    position: relative;
+}
+
+.text-center { text-align: center; }
+.mt-1 { margin-top: 1rem; }
+.mt-2 { margin-top: 2rem; }
+.mb-1 { margin-bottom: 1rem; }
+.mb-2 { margin-bottom: 2rem; }
+.hidden { display: none !important; }
+
+/* =========================================
+   Typography
+   ========================================= */
+.glow-text {
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    color: #fff;
+    text-shadow: 0 0 10px var(--secondary), 0 0 20px var(--primary), 0 0 40px var(--primary);
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.sub-text {
+    font-size: clamp(1.2rem, 4vw, 2rem);
+    color: #ffb8e0;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    margin-bottom: 30px;
+}
+
+.message-text {
+    font-size: clamp(1rem, 3.5vw, 1.4rem);
+    line-height: 1.6;
+    margin-bottom: 15px;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+}
+
+.signature {
+    text-align: right;
+    font-size: 2rem;
+    margin-top: 20px;
+}
+
+/* =========================================
+   Glassmorphism Components
+   ========================================= */
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 30px;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: var(--shadow);
+}
+
+.glass-btn, .continue-btn, .primary-btn {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.glass-btn:hover, .continue-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 121, 198, 0.4);
+}
+
+#music-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 100;
+    font-size: 0.9rem;
+    padding: 8px 16px;
+}
+
+/* =========================================
+   Animations & Page Transitions
+   ========================================= */
+.page-fade-in {
+    animation: fadeIn 1s ease forwards;
+}
+
+.fade-out {
+    animation: fadeOut 0.8s ease forwards !important;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+.fade-up {
+    opacity: 0;
+    animation: fadeUp 1s ease 0.5s forwards;
+}
+
+.delay-1 { animation-delay: 2s; }
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================================
+   Gift Box
+   ========================================= */
+.gift-container {
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.gift-container:hover {
+    transform: scale(1.1);
+}
+
+.gift-box {
+    font-size: clamp(5rem, 15vw, 8rem);
+    animation: bounce 2s infinite ease-in-out;
+    position: relative;
+    z-index: 2;
+}
+
+.gift-glow {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%; height: 100%;
+    background: radial-gradient(circle, rgba(255,121,198,0.8) 0%, rgba(0,0,0,0) 70%);
+    filter: blur(20px);
+    z-index: 1;
+    animation: pulse 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
+    50% { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
+}
+
+/* =========================================
+   Particles & Falling Items
+   ========================================= */
+.particle, .falling-item {
+    position: absolute;
+    pointer-events: none;
+    z-index: 5;
+}
+
+@keyframes fall {
+    0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+}
+
+/* =========================================
+   Game Specific Styles
+   ========================================= */
+#escape-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.5rem;
+    padding: 15px 30px;
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    border: none;
+    transition: left 0.3s ease, top 0.3s ease, transform 0.1s;
+}
+
+.screen-shake {
+    animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+@keyframes shake {
+    10%, 90% { transform: translate3d(-5px, 0, 0); }
+    20%, 80% { transform: translate3d(5px, 0, 0); }
+    30%, 50%, 70% { transform: translate3d(-10px, -10px, 0); }
+    40%, 60% { transform: translate3d(10px, 10px, 0); }
+}
+
+#pony-container {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    z-index: 20;
+    transition: all 0.3s;
+}
+
+#pony-img {
+    height: 150px;
+    width: auto;
+    filter: drop-shadow(0 0 15px rgba(255,255,255,0.5));
+}
+
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+}
+
+/* Pony Animations */
+.anim-dance { animation: dance 0.5s infinite alternate; }
+.anim-jump { animation: jump 0.4s ease; }
+.anim-fly { animation: fly 1s ease-in-out; }
+.anim-wave { animation: wave 0.5s ease; }
+.anim-scale { animation: popScale 0.4s ease; }
+
+@keyframes dance {
+    0% { transform: translate(-50%, -50%) rotate(-10deg); }
+    100% { transform: translate(-50%, -50%) rotate(10deg); }
+}
+@keyframes jump {
+    0%, 100% { transform: translate(-50%, -50%); }
+    50% { transform: translate(-50%, -80%); }
+}
+@keyframes fly {
+    0% { transform: translate(-50%, -50%); }
+    50% { transform: translate(-50%, -150%) scale(1.2); }
+    100% { transform: translate(-50%, -50%); }
+}
+@keyframes wave {
+    0%, 100% { transform: translate(-50%, -50%) rotate(0deg); }
+    25% { transform: translate(-50%, -50%) rotate(-20deg); }
+    75% { transform: translate(-50%, -50%) rotate(20deg); }
+}
+@keyframes popScale {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); }
+    50% { transform: translate(-50%, -50%) scale(1.5); }
+}

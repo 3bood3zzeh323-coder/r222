@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You 💜</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="page-fade-in">
+    <div class="bg-wrapper"></div>
+    <div id="fireworks-container"></div>
+    <div class="stars-container" id="stars"></div>
+    
+    <button id="music-toggle" class="glass-btn">🎵 Music</button>
+
+    <main class="center-content text-center">
+        <div class="glass-card fade-up">
+            <h1 class="glow-text mb-1">Thank you for visiting.</h1>
+            <p class="message-text mb-2">I hope this little gift made you smile.</p>
+            <p class="sub-text">Made especially for</p>
+            <h2 class="glow-text highlight mt-1">Rema 💜</h2>
+        </div>
+    </main>
+
+    <audio id="bg-music" loop src="assets/music.mp3"></audio>
+    <script src="js/main.js"></script>
+    <script src="js/particles.js"></script>
+    <script>
+        startFireworks();
+        startFallingItems(['💖', '✨', '⭐'], 800);
+    </script>
+</body>
+</html>

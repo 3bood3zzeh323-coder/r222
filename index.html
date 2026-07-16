@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Rema 💜</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="page-fade-in">
+    <!-- Background Elements -->
+    <div class="bg-wrapper"></div>
+    <div class="stars-container" id="stars"></div>
+
+    <!-- UI Overlay -->
+    <button id="music-toggle" class="glass-btn">🎵 Play Music</button>
+
+    <!-- Main Content -->
+    <main class="center-content">
+        <h1 class="glow-text">For Rema 💜</h1>
+        <h2 class="sub-text">For the cutest girl ever ❤️</h2>
+        
+        <div class="gift-container" id="gift-box">
+            <div class="gift-box">🎁</div>
+            <div class="gift-glow"></div>
+        </div>
+    </main>
+
+    <!-- Audio Elements -->
+    <audio id="bg-music" loop src="assets/music.mp3"></audio>
+
+    <script src="js/main.js"></script>
+    <script src="js/particles.js"></script>
+    <script>
+        document.getElementById('gift-box').addEventListener('click', (e) => {
+            createExplosion(e.clientX, e.clientY, ['✨', '💖', '🎉']);
+            setTimeout(() => {
+                transitionTo('message.html');
+            }, 800);
+        });
+    </script>
+</body>
+</html>

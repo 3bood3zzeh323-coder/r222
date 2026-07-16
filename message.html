@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Message for You 💜</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="page-fade-in">
+    <div class="bg-wrapper"></div>
+    <div id="falling-container"></div>
+    
+    <button id="music-toggle" class="glass-btn">🎵 Music</button>
+
+    <main class="center-content">
+        <div class="glass-card fade-up">
+            <p class="message-text">Dear Rema,</p>
+            <p class="message-text">I made this little surprise just for you.</p>
+            <p class="message-text">I hope it makes you smile today.</p>
+            <p class="message-text">You are kind, wonderful and deserve lots of happiness.</p>
+            <p class="message-text">Never stop being the amazing person you are.</p>
+            <p class="message-text signature">💜</p>
+        </div>
+        
+        <button class="continue-btn mt-2 fade-up delay-1" onclick="transitionTo('game.html')">Continue &rarr;</button>
+    </main>
+
+    <audio id="bg-music" loop src="assets/music.mp3"></audio>
+    <script src="js/main.js"></script>
+    <script src="js/particles.js"></script>
+    <script>
+        // Start falling items specific to this page
+        startFallingItems(['🌹', '🌸', '🍬', '🍭', '💖', '✨']);
+    </script>
+</body>
+</html>
